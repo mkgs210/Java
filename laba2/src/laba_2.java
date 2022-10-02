@@ -39,18 +39,25 @@ public class laba_2 {
         //for(Peripheral i:masiv){out_obj(i);}//Вывод всех obj для проверки
     }
 
-    public static void out_masiv(List<Peripheral> masiv){
+    public static boolean out_masiv(List<Peripheral> masiv){
         if (masiv.size()!=0){
             System.out.println("Вывод устройств");
             for (int i=0; i<masiv.size(); i++){
                 System.out.println(i + ": " + masiv.get(i));
             }
+            return true;
         }else{
             System.out.println("Нет доступных устройств");
+            return false;
         }
     }
     public static void choose_obj(List<Peripheral> masiv){
-        out_masiv(masiv);
+        boolean m = out_masiv(masiv);
+        if(!m){
+            System.out.println("Сначала нужно создать объект");
+            new_obj(masiv);
+            out_masiv(masiv);
+        }
         int k = -1;
         System.out.println("Введите номер объекта");
         while(true) {
@@ -94,8 +101,19 @@ public class laba_2 {
                     break;
                 case 2:
                     if(obj.getClass().getSimpleName().equals("Monitor")){
-                        System.out.println("Какая частота в герцах у этого устройства?");
-                        obj.set(input.nextInt(), "");
+                        while (true){
+                            System.out.println("Какая частота в герцах у этого устройства?");
+                            Scanner input2 = new Scanner(System.in);
+                            k = -1;
+                            try {
+                                k = input2.nextInt();
+                            } catch (Exception e) {
+                                System.out.println("Цифрами надо!!!!!");
+                                continue;
+                            }
+                            obj.set(k, "");
+                            break;
+                        }
                     }else{
                         System.out.println("Какая раскладка у этого устройства?");
                         obj.set(0, input.next());
