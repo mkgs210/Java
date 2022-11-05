@@ -1,8 +1,11 @@
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class laba1_1 {
     static int k = 0;
+
     static Scanner input = new Scanner(System.in); // Объявляем Scanner
 
     public static int[] enter( int m, int n){
@@ -41,7 +44,6 @@ public class laba1_1 {
     }
 
     public static void main(String[] args) {
-
         //System.out.println("Enter array length: ");
         //int size = input.nextInt(); // Читаем с клавиатуры размер массива и записываем в size
         int[] myArray1 = new int[7]; // Создаём массив int размером в size

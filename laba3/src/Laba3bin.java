@@ -1,14 +1,13 @@
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+
 public class Laba3bin {
-    public static void write(String filename, Object filesFound){
+    public static void write(String filename, String filesFound){
         File file = new File (filename);
         try{
             FileOutputStream fos = new FileOutputStream(file);
-            ObjectOutputStream serial = new ObjectOutputStream(fos);
-            serial.writeObject(filesFound);
-            serial.flush();
+            fos.write(filesFound.getBytes());
             fos.close();
-            serial.close();
         }catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -19,14 +18,14 @@ public class Laba3bin {
         File file = new File (filename);
         try{
             FileInputStream fos = new FileInputStream(file);
-            ObjectInputStream serial = new ObjectInputStream(fos);
-            String text = serial.readObject().toString();
+            String text = new String(fos.readAllBytes(), StandardCharsets.UTF_8);
 
             int indexA = text.indexOf("Автор");
             int indexB = text.indexOf("Книга");
             int indexT = text.indexOf("Тираж");
             int indexY = text.indexOf("Убийство");
             int indexy = text.indexOf("убийство");
+
             while (indexY != -1 || indexy != -1) {
                 if (indexB<indexY & indexY<indexT){
                     char[] dst=new char[indexB - indexA-1];
@@ -45,7 +44,7 @@ public class Laba3bin {
             }
 
             fos.close();
-            serial.close();
+
         }catch (Exception e){
             throw new RuntimeException(e);
         }
@@ -54,7 +53,7 @@ public class Laba3bin {
 
 
     public static void main(String args[]) {
-        Object bintext = "Автор: Березин Александр Юрьевич\n" +
+        String bintext = "Автор: Березин Александр Юрьевич\n" +
                 "Книга: убийство программ учащихся\n" +
                 "Тираж: 10000\n" +
                 "Цена: 1000\n" +
