@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="mysql-connector-j-8.0.31.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/mysql-connector-j-8.0.31.jar!/"/>
+	</lib>
+</component>

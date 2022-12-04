@@ -143,7 +143,7 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
                 g.drawImage(img, 8, 30, w, h, this);
                 if (frame>1){
                     frame=0;
-                    was_added_new_point=false;
+                    //was_added_new_point=false;
                 }
                 else{
                     frame++;

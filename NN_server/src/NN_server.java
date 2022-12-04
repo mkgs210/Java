@@ -1,4 +1,5 @@
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -6,10 +7,10 @@ import java.util.Base64;
 import java.sql.* ;
 
 
-public class Server {
+public class NN_server {
     //private static NeuralNetwork nn;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InvocationTargetException, InstantiationException, IllegalAccessException {
         ServerSocket server = new ServerSocket(50005);
         ServerSocket server2 = new ServerSocket(50006);
         //ServerSocket server3 = new ServerSocket(50003);
@@ -21,7 +22,7 @@ public class Server {
         String pass = "12345";
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");//.getDeclaredConstructor().newInstance();
+            Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
             Connection con = DriverManager.getConnection(url, user, pass);
             System.out.println("MySQL connected");
 
@@ -43,7 +44,7 @@ public class Server {
                 myThread0.start();
             }
 
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException | NoSuchMethodException e) {
             System.out.println(e.getMessage());
         }
 

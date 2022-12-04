@@ -1,8 +1,10 @@
 import java.io.*;
+import java.lang.reflect.InvocationTargetException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Objects;
 import java.sql.* ;
 
 
@@ -36,7 +38,7 @@ public class Server {
                 Thread myThread0 = new Thread(() -> {
                     try {
                         dots(server, server2, con);
-                    } catch (IOException | InterruptedException e) {
+                    } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 });
@@ -159,7 +161,7 @@ public class Server {
         outStream.flush();
     }
 
-    private static void dots(ServerSocket server, ServerSocket server2, Connection con) throws IOException, InterruptedException {
+    private static void dots(ServerSocket server, ServerSocket server2, Connection con) throws IOException {
         var ref = new Object() {
             Socket socket = server.accept();
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
@@ -168,7 +170,6 @@ public class Server {
         while (true) {
             Thread myThread = new Thread(()->{
                 try {
-                    ref.socket.setSoTimeout(1000 * 60 * 3);
                     BufferedReader reader = new BufferedReader(new InputStreamReader(ref.socket.getInputStream()));
                     String request = reader.readLine();
                     System.out.println("Request: "+request);
@@ -206,7 +207,14 @@ public class Server {
                 }
             });
             myThread.start();
-            Thread.sleep(100);
+//            try {
+//                //System.out.println("A");
+//                Thread.sleep(1);
+//                //System.out.println("B");
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+
             myThread.interrupt();
             //myThread.isInterrupted();
 

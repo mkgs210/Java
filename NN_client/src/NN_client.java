@@ -1,6 +1,6 @@
 import java.io.*;
 
-public class Client {
+public class NN_client {
 
 
     public static void main(String[] args) throws IOException {

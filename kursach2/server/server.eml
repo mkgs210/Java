@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="mysql-connector-j-8.0.31.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/server/mysql-connector-j-8.0.31.jar!/"/>
+	</lib>
+	<lib name="commons-lang3-3.12.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/client/commons-lang3-3.12.0.jar!/"/>
+	</lib>
+	<lib name="commons-lang3-3.12.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/client/src/commons-lang3-3.12.0.jar!/"/>
+	</lib>
+</component>

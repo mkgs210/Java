@@ -27,15 +27,14 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
     private BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
     private BufferedImage pimg = new BufferedImage(w / square, h / square, BufferedImage.TYPE_INT_RGB);
     //private int frame = 0;
-    //private double learning_rate = 0.001;
+    private double learning_rate = 0.001;
     private int epoch = (w*h/square);
     private double l2 = 0.0000001;
 
     //private NeuralNetwork nn;
     public ArrayList<Point> points = new ArrayList<Point>();
 
-    public FormDots(Integer port1,Integer port2, String message) throws IOException {
-
+    public FormDots(Integer port1,Integer port2) throws IOException {
         Socket socket = new Socket("127.0.0.1",port1);
         //Socket socket2 = new Socket("127.0.0.1",port2);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
@@ -45,7 +44,7 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
         //ObjectOutputStream outStream = new ObjectOutputStream(socket2.getOutputStream());
         //ObjectInputStream inputStream = new ObjectInputStream(socket2.getInputStream());
 
-        writer.write("NeuralNetwork>"+message);
+        writer.write("NeuralNetwork>"+learning_rate+">"+l2+">"+ 2 + ">"+ 5 +">" + 5 +">"+ 5 +">" + 2);
         writer.newLine();
         writer.flush();
         this.thread = reader.readLine();
