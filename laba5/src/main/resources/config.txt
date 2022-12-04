@@ -1,0 +1,5 @@
+Push 100
+Push 20
+Print
+Add
+Print

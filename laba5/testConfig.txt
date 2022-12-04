@@ -1,0 +1,4 @@
+Push 10
+Push 43
+Mul
+Print

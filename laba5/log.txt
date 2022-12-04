@@ -1,0 +1,6 @@
+дек. 03, 2022 2:37:24 PM GenericCalculator doOperation
+WARNING: Неизвестная команда fsdagaagds (line 2)
+дек. 03, 2022 2:37:24 PM GenericCalculator doOperation
+WARNING: Попытка использовать неопределенную переменную Lol в команде Push (line 5)
+дек. 03, 2022 2:37:24 PM GenericCalculator doOperation
+WARNING: Попытка выполнить операцию при пустом стеке в команде Print (line 12)

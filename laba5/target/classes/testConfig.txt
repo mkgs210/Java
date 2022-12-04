@@ -1,0 +1,12 @@
+#afdpsdgsjoi ajieji io r13iu 21in edjksd abkв
+fsdagaagds
+Define A 25
+Push 10
+Push Lol
+Pop
+Push 20
+Push A
+Add
+Print
+Pop
+Print
