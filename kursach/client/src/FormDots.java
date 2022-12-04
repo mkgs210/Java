@@ -1,4 +1,3 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -15,7 +14,6 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
     private final int square = 10;
     private final Integer port1;
     private final Integer port2;
-    private final Integer port3;
     private boolean smart;
     private  BufferedWriter writer;
     private  ObjectOutputStream outStream;
@@ -33,18 +31,15 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
     //private NeuralNetwork nn;
     public ArrayList<Point> points = new ArrayList<Point>();
 
-    public FormDots(Integer port1,Integer port2,Integer port3) throws IOException {
+    public FormDots(Integer port1,Integer port2) throws IOException {
         Socket socket = new Socket("127.0.0.1",port1);
         //Socket socket2 = new Socket("127.0.0.1",port2);
-        //Socket socket3 = new Socket("127.0.0.1",port3);
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         BufferedWriter writer = new BufferedWriter(
                 new OutputStreamWriter(
                         socket.getOutputStream()));
         //ObjectOutputStream outStream = new ObjectOutputStream(socket2.getOutputStream());
         //ObjectInputStream inputStream = new ObjectInputStream(socket2.getInputStream());
-        //DataOutputStream dos = new DataOutputStream(socket3.getOutputStream());
-        //DataInputStream dis = new DataInputStream(socket3.getInputStream());
 
         writer.write("NeuralNetwork>"+learning_rate+">"+l2+">"+ 2 + ">"+ 5 +">"+ 5 +">" + 5 +">" + 2);
         writer.newLine();
@@ -52,7 +47,6 @@ public class FormDots extends JFrame implements Runnable, MouseListener {
         this.smart = true;
         this.port1 = port1;
         this.port2 = port2;
-        this.port3 = port3;
         this.writer = writer;
         this.reader = reader;
         //this.outStream = outStream;

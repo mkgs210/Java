@@ -10,22 +10,24 @@ public class Server {
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(50005);
         ServerSocket server2 = new ServerSocket(50006);
-        ServerSocket server3 = new ServerSocket(50003);
-
+        //ServerSocket server3 = new ServerSocket(50003);
+        String connectionUrl =
+                "jdbc:sqlserver://yourserver.database.windows.net:1433;"
+                        + "database=AdventureWorks;"
+                        + "user=yourusername@yourserver;"
+                        + "password=yourpassword;"
+                        + "encrypt=true;"
+                        + "trustServerCertificate=false;"
+                        + "loginTimeout=30;";
         System.out.println("Server started!");
 
-        dots(server, server2, server3);
+        dots(server, server2);
     }
-    private static void dots(ServerSocket server, ServerSocket server2, ServerSocket server3) throws IOException {
+    private static void dots(ServerSocket server, ServerSocket server2) throws IOException {
         Socket socket = server.accept();
 
-        //Socket socket3 = server3.accept();
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
         BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-
-        //DataOutputStream dos = new DataOutputStream(socket3.getOutputStream());
-        //DataInputStream dis = new DataInputStream(socket3.getInputStream());
 
         while (true) {
             new Thread(()->{
